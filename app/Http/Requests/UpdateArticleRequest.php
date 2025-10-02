@@ -11,7 +11,7 @@ class UpdateArticleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true; //cambiar de false a true para autorizar
     }
 
     /**
@@ -21,8 +21,10 @@ class UpdateArticleRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+          return [
+            'title' => ['required', 'min:3', 'max:255', 'string'],
+            'content' => ['required', 'min:5', 'max:255', 'string'],
+            'is_published' => ['boolean']
         ];
     }
 }

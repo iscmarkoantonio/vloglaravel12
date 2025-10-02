@@ -60,15 +60,22 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('articles.edit',[
+            'article' => $article
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateArticleRequest $request, Article $article)
+    public function update(UpdateArticleRequest $request, Article $article) //ir a UpdateArticleRequest para cambiar a true
     {
-        //
+        // return $request;
+        $validated = $request->validated();
+        
+        $article->update($validated);
+        
+        return redirect()->route('articles.index');
     }
 
     /**

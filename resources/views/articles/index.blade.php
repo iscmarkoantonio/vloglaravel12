@@ -26,6 +26,8 @@
                             <td class="p-4">{{ $article->is_published ? 'Yes' : 'No' }}</td>
                             <td class="p-4">{{ $article->created_at }}</td>
                             <td class="p-4">
+                                <a href="{{ route('articles.edit', $article) }}"
+                                    class="font-medium text-primary underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark">Edit</a>
 
                             </td>
                         </tr>
