@@ -13,7 +13,14 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+         // 'articles' => Article::all()
+        // return view('articles.index', [
+           
+        //     'articles' => Article::paginate(10)
+        // ]);
+
+        $articles = Article::paginate(10);
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -21,7 +28,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -29,7 +36,15 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        //
+        // return $request; //ir a StoreArticleRequest y cambiar a true
+        // Article::create($request->all);
+        $validated = $request->validated();
+
+        $request->user()
+            ->articles()
+            ->create($validated);
+
+        return redirect()->route('articles.index');
     }
 
     /**
