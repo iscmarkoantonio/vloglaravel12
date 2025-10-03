@@ -18,7 +18,7 @@
                         </svg>
                     </div>
                     <div class="ml-2">
-                        <h3 class="text-sm font-semibold text-danger">Article messages</h3>
+                        <h3 class="text-sm font-semibold text-danger">User messages</h3>
                         <p class="text-xs font-medium sm:text-sm">{{ $message }}</p>
                     </div>
                     <button type="button" @click="alertIsVisible = false" class="ml-auto" aria-label="dismiss alert">
