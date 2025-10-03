@@ -33,9 +33,20 @@
                         class="rounded-radius w-fit bg-surface-dark-alt px-2 py-1 text-xs font-medium text-on-surface-dark dark:bg-surface-alt dark:text-on-surface">Draft</span>
                 @endif
             </div>
-            <div class="mt-4">
+            <div class="flex items-center mt-4 space-x-3">
                 <a href="{{ route('articles.edit', $article) }}"
                     class="font-medium text-primary underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark">Edit</a>
+
+                <form action="{{ route('articles.destroy', $article) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button
+                        class="font-medium text-danger underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark"
+                        type="submit"
+                        onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;">
+                        <i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                </form>
+
 
             </div>
         </article>
