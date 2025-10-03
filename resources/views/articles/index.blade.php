@@ -25,9 +25,11 @@
                             <td class="p-4">{{ $article->author->name }}</td>
                             <td class="p-4">{{ $article->is_published ? 'Yes' : 'No' }}</td>
                             <td class="p-4">{{ $article->created_at }}</td>
-                            <td class="p-4">
+                            <td class="p-4 space-x-4">
                                 <a href="{{ route('articles.edit', $article) }}"
                                     class="font-medium text-primary underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark">Edit</a>
+                                <a href="{{ route('articles.show', $article) }}"
+                                    class="font-medium text-primary underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark">View</a>
 
                             </td>
                         </tr>
