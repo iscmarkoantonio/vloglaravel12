@@ -21,6 +21,7 @@
                     <div class="flex flex-col gap-1">
                         <h3 class="font-bold leading-4 text-on-surface-strong dark:text-on-surface-dark-strong">
                             {{ $article->author->name }}</h3>
+                        <span class="text-xs">{{ $article->author->email }}</span>
                     </div>
                 </div>
 

@@ -10,6 +10,7 @@
                 <thead
                     class="border-b border-outline bg-surface-alt text-sm text-on-surface-strong dark:border-outline-dark dark:bg-surface-dark-alt dark:text-on-surface-dark-strong">
                     <tr>
+                        <th scope="col" class="p-4 font-semibold">Article ID</th>
                         <th scope="col" class="p-4">Title</th>
                         <th scope="col" class="p-4">Author</th>
                         <th scope="col" class="p-4">Published</th>
@@ -21,21 +22,32 @@
                     {{-- @forelse ([] as $article) --}}
                     @forelse ($articles as $article)
                         <tr>
+                            <td class="p-4">{{ $article->id }}</td>
                             <td class="p-4">{{ $article->title }}</td>
                             <td class="p-4">{{ $article->author->name }}</td>
                             <td class="p-4">{{ $article->is_published ? 'Yes' : 'No' }}</td>
                             <td class="p-4">{{ $article->created_at }}</td>
-                            <td class="p-4 space-x-4">
+                            <td class="flex items-center p-4 space-x-4">
                                 <a href="{{ route('articles.edit', $article) }}"
                                     class="font-medium text-primary underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark">Edit</a>
                                 <a href="{{ route('articles.show', $article) }}"
                                     class="font-medium text-primary underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark">View</a>
+                                <form method="POST" action="{{ route('articles.destroy', $article) }}"
+                                    onsubmit="return confirm('Are you sure want to delete this article?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="cursor-pointer font-medium text-danger underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark">
+                                        Delete
+                                    </button>
+
+                                </form>
 
                             </td>
                         </tr>
                     @empty
                         <tr class="text-center">
-                            <td class="p-4" colspan="5">No Data</td>
+                            <td class="p-4" colspan="6">No Data</td>
                         </tr>
                     @endforelse
 
