@@ -20,6 +20,9 @@
                 <flux:navlist.item icon="book-open" :href="route('articles.index')"
                     :current="request()->routeIs('articles.*')" wire:navigate>{{ __('Articles') }}
                 </flux:navlist.item>
+                <flux:navlist.item icon="users" :href="route('users.index')" :current="request()->routeIs('users.*')"
+                    wire:navigate>{{ __('Users') }}
+                </flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 
@@ -111,7 +114,8 @@
                 <flux:menu.separator />
 
                 <flux:menu.radio.group>
-                    <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}
+                    <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>
+                        {{ __('Settings') }}
                     </flux:menu.item>
                 </flux:menu.radio.group>
 
