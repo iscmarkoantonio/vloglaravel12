@@ -87,6 +87,6 @@ class ArticleController extends Controller
     {
         $article->delete();
 
-        return view('articles.index');
+        return redirect()->route('articles.index');
     }
 }

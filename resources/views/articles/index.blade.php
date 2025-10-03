@@ -32,7 +32,8 @@
                                     class="font-medium text-primary underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark">Edit</a>
                                 <a href="{{ route('articles.show', $article) }}"
                                     class="font-medium text-primary underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark">View</a>
-                                <form method="POST" action="{{ route('articles.destroy', $article) }}"
+
+                                {{-- <form method="POST" action="{{ route('articles.destroy', $article) }}"
                                     onsubmit="return confirm('Are you sure want to delete this article?')">
                                     @csrf
                                     @method('DELETE')
@@ -40,8 +41,19 @@
                                         class="cursor-pointer font-medium text-danger underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark">
                                         Delete
                                     </button>
+                                </form> --}}
 
+                                <form action="{{ route('articles.destroy', $article->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button
+                                        class="font-medium text-danger underline-offset-2 hover:underline focus:underline focus:outline-hidden dark:text-primary-dark"
+                                        type="submit"
+                                        onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;">
+                                        <i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                 </form>
+
+
 
                             </td>
                         </tr>
